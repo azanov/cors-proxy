@@ -25,7 +25,7 @@ app.all('*', function (req, res, next) {
             return;
         }
         
-        var headers = req.headers
+        var headers = JSON.parse(JSON.stringify(req.headers))
         delete headers['target-url']
          
         request({ url: targetURL + req.url, method: req.method, json: req.body, headers: headers},
